@@ -64,7 +64,7 @@
     "fsfsdf1"; // возвращается как есть
 
 
-    /*Operators*/
+    /* ========== Operators ========== */
     /*
     operators precedence = очерёдность выполнения оператора
     1) арифметические
@@ -96,12 +96,26 @@
     var age = 18;
     if (age === 18) {
         alert('you are adult');
+    } else if (age === 17) {
+        alert(age);
+    } else if (age === 19) {
+        alert(age);
     } else {
-
+        alert('not ready');
     }
 
-    /*4) логические
-        *  */
+    // ternary operator simple.
+    (age === 18) ? alert('You are adult') : alert('not adult yet');
+
+    // ternary operator complex.
+    (age === 18) ? alert('You are adult') :
+        (age === 21 ) ? alert('not adult yet') :
+            (age === 22 ) ? alert('not adult yet') :
+                (age === 30 ) ? alert('other');
+
+    /* 4) логические */
+    // ||,&&,!
+    (age >= 18 && age <= 50) ? alert('adult') : alert('you do not match');
 
 
 </script>

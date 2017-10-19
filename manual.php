@@ -7,7 +7,7 @@
  */
 ?>
 <script>
-    /* Типы данных */
+    /* ========== Типы данных ========== */
     var str = "Halk Hogan", //строка
         number = 1, // число
         numberSecond = 2.4,
@@ -117,5 +117,92 @@
     // ||,&&,!
     (age >= 18 && age <= 50) ? alert('adult') : alert('you do not match');
 
+    /* ========== Numbers ========== */
+    var number = 234.700,
+        n = NaN,
+        inf = Infinity; // бесконечность, плюсовая или минусовая, больше любого числа
+
+    //основные методы
+    console.log(number.toFixed(2));         // оставит только нужное кол-во цифер после запятой
+    console.log(number.toExponential());    // кол-во цифр после запятой, без окургления
+    console.log(number.toPrecision(4));     // возвращает строку, представляющую объект Number с указанной точностью.
+    console.log(typeof number.toString());  // конверт в строку
+
+    //методы и свойства объекта Math
+    console.log(Math.sqrt(81));
+    console.log(Math.pow(5, 2));
+    console.log(Math.floor(number));      // округление вниз
+    console.log(Math.ceil(number));       // округление вверх
+    console.log(Math.round(number));      // округление математическое
+    console.log(Math.PI);
+
+    //NaN = не число(если делим строку, например)
+    console.log(NaN === NaN);        // false
+    console.log(isNaN(number));      // true if not a number, false if number valid
+
+    //Infinity
+    console.log(1 / 0);
+    console.log(-1 / 0);
+    console.log(inf > 33634);
+    console.log(inf + 33634); // returns infinity
+
+    /* ========== Strings ========== */
+    var str = '"String" is a data type';
+    str2 = "\"string\" is a data type",
+        longStr = 'длинная\n \tстрока \tкакая то\n получилась';
+
+    console.log( str2.length ); //кол-во символов в строке
+    console.log( 'hello ' + 'world' ); //конкатенация
+
+    console.log( 'hello ' .concat('world') ); //конкатенация
+
+    console.log( str.charAt(1) ); //символ по индексу
+    console.log( str.charCodeAt(1) ); //character code по индексу
+
+    //работа с подстроками
+    console.log( str.substring(0, 8) ); //начало, конец
+    console.log( str.slice(-5) ); //можно с конца обрезать
+    console.log( str.substr(14, 4 ) ); //второй аргумент кол-во символов
+
+    console.log( str.split(' ') ); //разбиение на массив
+
+    console.log( str.replace('string', 'number') ); //замена
+    console.log( str.indexOf('a') ); //индекс по символу
+
+    console.log( str.toUpperCase() ); //к верхнему регистру
+    console.log( str.toLowerCase() ); //к нижнему регистру
+
+    /* ========== boolean, null, undefined ========== */
+    var obj = {},
+        param,
+        arr = [1,2,3];
+
+    // единственные значения, которые после преобразования в були становятся ложными
+    console.log( Boolean(NaN) );
+    console.log( Boolean("") );
+    console.log( Boolean(0) );
+    console.log( Boolean(undefined) );
+    console.log( Boolean(null) );
+
+    // все остальные всегда истинные
+    console.log( Boolean('sdgsgd') );
+    console.log( Boolean(534534) );
+    console.log( Boolean(obj) );
+
+    var booll = 'str';
+
+    if ( booll ) {
+//console.log( 'Привет ребята!' );
+    }
+
+    console.log( param ); //переменная без значения вернет undefined
+    console.log( obj.parampam ); //несуществующее свойство вернет undefined
+    console.log( arr[7] ); //несуществующий элемент массива вернет undefined
+
+    var func = function(arg) {
+        console.log(arg); //если аргумент не передан, то после вызова функции вернет undefined
+    };
+
+    func();
 
 </script>

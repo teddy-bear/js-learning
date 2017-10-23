@@ -151,58 +151,146 @@
     str2 = "\"string\" is a data type",
         longStr = 'длинная\n \tстрока \tкакая то\n получилась';
 
-    console.log( str2.length ); //кол-во символов в строке
-    console.log( 'hello ' + 'world' ); //конкатенация
+    console.log(str2.length); //кол-во символов в строке
+    console.log('hello ' + 'world'); //конкатенация
 
-    console.log( 'hello ' .concat('world') ); //конкатенация
+    console.log('hello '.concat('world')); //конкатенация
 
-    console.log( str.charAt(1) ); //символ по индексу
-    console.log( str.charCodeAt(1) ); //character code по индексу
+    console.log(str.charAt(1)); //символ по индексу
+    console.log(str.charCodeAt(1)); //character code по индексу
 
     //работа с подстроками
-    console.log( str.substring(0, 8) ); //начало, конец
-    console.log( str.slice(-5) ); //можно с конца обрезать
-    console.log( str.substr(14, 4 ) ); //второй аргумент кол-во символов
+    console.log(str.substring(0, 8)); //начало, конец
+    console.log(str.slice(-5)); //можно с конца обрезать
+    console.log(str.substr(14, 4)); //второй аргумент кол-во символов
 
-    console.log( str.split(' ') ); //разбиение на массив
+    console.log(str.split(' ')); //разбиение на массив
 
-    console.log( str.replace('string', 'number') ); //замена
-    console.log( str.indexOf('a') ); //индекс по символу
+    console.log(str.replace(' string', 'number')); //замена
+    console.log(str.indexOf('a')); //индекс по символу
 
-    console.log( str.toUpperCase() ); //к верхнему регистру
-    console.log( str.toLowerCase() ); //к нижнему регистру
+    console.log(str.toUpperCase()); //к верхнему регистру
+    console.log(str.toLowerCase()); //к нижнему регистру
 
     /* ========== boolean, null, undefined ========== */
     var obj = {},
         param,
-        arr = [1,2,3];
+        arr = [1, 2, 3];
 
     // единственные значения, которые после преобразования в були становятся ложными
-    console.log( Boolean(NaN) );
-    console.log( Boolean("") );
-    console.log( Boolean(0) );
-    console.log( Boolean(undefined) );
-    console.log( Boolean(null) );
+    console.log(Boolean(NaN));
+    console.log(Boolean(""));
+    console.log(Boolean(0));
+    console.log(Boolean(undefined));
+    console.log(Boolean(null));
 
     // все остальные всегда истинные
-    console.log( Boolean('sdgsgd') );
-    console.log( Boolean(534534) );
-    console.log( Boolean(obj) );
+    console.log(Boolean('sdgsgd'));
+    console.log(Boolean(534534));
+    console.log(Boolean(obj));
 
     var booll = 'str';
 
-    if ( booll ) {
-//console.log( 'Привет ребята!' );
+    if (booll) {
+        console.log('Привет ребята!');
     }
 
-    console.log( param ); //переменная без значения вернет undefined
-    console.log( obj.parampam ); //несуществующее свойство вернет undefined
-    console.log( arr[7] ); //несуществующий элемент массива вернет undefined
+    var bool = false;
+    if (!bool) {
+        console.log('works'); // returns true
+    }
 
-    var func = function(arg) {
+    // Случаи когда можно получить undefined.
+    console.log(param); //переменная без значения вернет undefined
+    console.log(obj.parampam); //несуществующее свойство вернет undefined
+    console.log(arr[7]); //несуществующий элемент массива вернет undefined
+
+    var func = function (arg) {
         console.log(arg); //если аргумент не передан, то после вызова функции вернет undefined
     };
 
     func();
+
+    /* ========== #8 — Преобразования типов данных. ========== */
+    /* ========== https://loftblog.ru/material/osnovy-javascript-8-preobrazovaniya-tipov-dannyx/ ========== */
+    //явные преобразования
+    console.log(typeof String(455)); //в строку
+    console.log(typeof Number('455')); //в число
+    console.log(typeof Boolean(0)); // в буль
+
+    //быстро в строку -> неявное преобразование
+    console.log(typeof (23626 + '')); // concat.
+    console.log(23626 + '');
+
+    //быстро в число
+    console.log(typeof (+'23626'));
+    console.log(+'23626');
+    console.log(+"");// 0 = false
+    console.log(+true); // 1 = true
+    console.log(+false); // 0 = true
+
+    //быстро в буль
+    console.log(typeof (!!'24'));
+    console.log(!!'24'); // true
+
+    var num = 777;
+
+    //функции и методы преобразования
+    console.log(typeof num.toString()); //в строку
+
+    console.log(parseInt("100.24 px", 10)); // в число
+    console.log(parseFloat("100.24 px")); //может преобразовать число с плавающей точкой
+
+    /* ========== #9 — Объекты. ========== */
+    // контейнер ключей и свойств
+    /* ========== @lnk https://loftblog.ru/material/osnovy-javascript-8-preobrazovaniya-tipov-dannyx/ ========== */
+    // cп-бы инициализации объекта
+    //var obj = new Object();
+    // инициализация через литерал
+    var obj = {
+        string : 'str', // свойство объекта
+        func : function() { // если ф-ция является свойством объекта, то тогда это метод!
+            console.log( this ); // метод - ф-ция которая является свойством объекта
+            // this = ссылка на данный объект
+        }
+    };
+
+    console.log(obj.param1); // точечная нотация
+    // or
+    console.log(obj['param1']); // скобочная нотация
+
+    var prop = 'func';
+    console.log(obj[func]); // получим obj.func
+
+    console.log( obj.fff || 'name' ); // зададим значение по умолчанию
+
+    // присвоение значений
+    obj.ddd = 'Gag 9'; //  добавление свойств в объект
+    obj.string = 'Banan'; // переназначение свойства объекта
+
+    //console.log( obj );
+
+    var a = {prop: 1}, b = {prop: 2}, c = {prop: 3};
+
+    a = b = c = {prop: 'allTheSame'};
+
+    //console.log(a, b, c );
+
+    var y = obj;
+
+    //console.log( y.string );
+
+    // объекты передаются по ссылкам, не копируются ???
+
+    delete obj.func; // удаление свойств объекта
+
+    //console.log( obj );
+
+    obj.func();
+
+    // инксапсуляция свойств объекта, для избежания глобальных переменных
+    var MYAPP = {
+
+    };
 
 </script>

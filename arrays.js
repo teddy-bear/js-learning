@@ -14,9 +14,14 @@ newArr.push('the very last'); // add last
 newArr.shift(); // remove first;
 newArr.unshift('the very first'); // add first
 
-newArr.splice(-2, 2);
+var arr_splice = ['a', 'b', 'c', 'd', 'e', 'f'];
+
+arr_splice.splice(-1, 1, 'replaced 1st', 'replaced 2nd'); // начиня с позиции -2 удалить 2 эл-та и встаивить на их место новые эл-ты
+
+// splice - изменяет текущий массив
+// slice - получает вырезку в новый массив(задать переменную) без именения исходного массива
 
 var sliced = newArr.slice(1, 3); // с какого по какой эл-т массива взять, исходный массив при этом не меняется
-console.log(newArr);
 
+console.log(arr_splice);
 var newArr2 = newArr.join('/');

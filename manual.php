@@ -346,5 +346,48 @@
     arr.sort();             // сортирует массив, но не правильно
     var sliced = newArr.slice(1, 3); // с какого по какой эл-т массива взять
 
+    /* ========== #11 — Циклы ========== */
+    // https://loftblog.ru/material/osnovy-javascript-11-cikly/
+    /*
+    В изучаемом нами языке программирования существует всего 4 типа циклов.
+    Любой цикл js включает в себя две части: условие (оно же выражение) и тело.
+    */
+    // конструкция к-рая позволяет повторять кол-во кода заданнное кол-во раз
+    // для перебора свойств объектов
+    var i;
+
+    // 1) For
+    var arr = [1, 2, 3],
+        len = arr.length;
+
+    for (i = 0; i < len; i++) { // (инициализация;тест;ин/декремент) .....
+        console.log(arr[i] * 2); // iteration
+    }
+
+    // 2) For in
+    var obj = {
+            propp: 'one',
+            proppSecond: 'two'
+        },
+        prop;
+
+    for (prop in obj) {
+        if (obj.hasOwnProperty(prop)) {
+            console.log(prop + ' : ' + obj[prop]);
+        }
+    }
+
+    // 3) while
+    var k = 0;
+    while (k < 10) {
+        console.log(k++);
+    }
+
+    //do while
+    var h = 0;
+
+    do {
+        console.log(h++);
+    } while (h < 1);
 
 </script>

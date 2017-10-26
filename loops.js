@@ -39,5 +39,5 @@ while (k < 5) {
 // сначала идёт тело, а потом условие => будет выполнен обязаетльно хотя бы 1 раз
 var h = 0;
 do {
-    console.log('do while values: ' + h++);
-} while (h < 4);
+    console.log('do while values: ' + ++h);
+} while (h < 0);

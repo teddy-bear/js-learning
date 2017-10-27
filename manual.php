@@ -155,7 +155,7 @@
     console.log(inf > 33634);
     console.log(inf + 33634); // returns infinity
 
-    /* ========== Strings ========== */
+    /* ========== #6 — Строки // Strings ========== */
     var str = '"String" is a data type';
     str2 = "\"string\" is a data type",
         longStr = 'длинная\n \tстрока \tкакая то\n получилась';
@@ -595,5 +595,72 @@
     };
 
     console.log(funcArgs(1, 2, 3, 545, 646, 6447, 444));
+
+
+    /* ========== #13 — Области видимости / scope. ========== */
+    // @ink https://loftblog.ru/material/osnovy-javascript-13-oblast-vidimosti-peremennyx-scope/
+    /*
+    * a) global = все переменные объявленные вне ф-ций
+    * window = global object
+    * b) local = которые находятся внутри ф-ций
+    * */
+
+    // глобальные переменные
+    var oneOne = 1;
+
+    // всегда пиши var !!!
+    globalll = 2444;
+
+    //пример как могут попортить жизнь, объявление переменных без var
+    //в данном случае i специально объявили без var
+    var outer = function () {
+        var local = '22'; //локальная переменная
+        var arr1 = [1, 2, 3];
+
+        for (i = 0; i < arr1.length; i++) {
+//console.log( i );
+            inner();
+
+//console.log( 'первый цикл' );
+        }
+    };
+
+    var inner = function () {
+
+        var arr2 = [4, 6, 8];
+
+        for (i = 0; i < arr2.length; i++) {
+//console.log( i );
+//console.log( 'второй цикл' );
+        }
+
+    };
+
+    outer();
+
+    //цепочка областей видимости
+
+    var k = 4;
+
+    console.log(k);
+    var outerScope = function () {
+        var k = 8,
+            i;
+
+        console.log(k);
+
+        var innerScope = function () {
+            var k = 12;
+            console.log(k);
+        };
+
+        innerScope();
+        console.log(k);
+
+    };
+
+    outerScope();
+
+    console.log(k);
 
 </script>

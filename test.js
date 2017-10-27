@@ -1,7 +1,13 @@
-var user = {
-    sayHi: function() {
-        alert(this);
-    }
-};
+//var age = +prompt('How old are you?', '');
+/*
+if (age >= 18 && age <= 100) {
+    //alert(age + " " + typeof+" " + age + ' access allowed');
+}
+else {
+    alert(age + " " + typeof age + " " +
+        'access denied');
+}*/
 
-(user.sayBye = user.sayHi)();
+var test = '11.122ehfh dfq 22';
+console.log(parseInt(test, 10));
+console.log(parseFloat(test));

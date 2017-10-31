@@ -1,13 +1,15 @@
-//var age = +prompt('How old are you?', '');
-/*
-if (age >= 18 && age <= 100) {
-    //alert(age + " " + typeof+" " + age + ' access allowed');
-}
-else {
-    alert(age + " " + typeof age + " " +
-        'access denied');
-}*/
+var firstFunc = function () {
+    var index = 5;
 
-var test = '11.122ehfh dfq 22';
-console.log(parseInt(test, 10));
-console.log(parseFloat(test));
+    return function() {
+        return index;
+    };
+};
+
+var secondFunc = function() {
+    var index = 15;
+
+    console.log( firstFunc()() );
+};
+
+secondFunc();

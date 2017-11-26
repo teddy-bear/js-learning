@@ -118,9 +118,9 @@
 
     // ternary operator complex.
     (age === 18) ? alert('You are adult') :
-        (age === 21 ) ? alert('not adult yet') :
-            (age === 22 ) ? alert('not adult yet') :
-                (age === 30 ) ? alert('other');
+        (age === 21) ? alert('not adult yet') :
+            (age === 22) ? alert('not adult yet') :
+                (age === 30) ? alert('other');
 
     /* 4) логические */
     // ||,&&,!

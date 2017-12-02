@@ -11,13 +11,8 @@
  */
 
 "use strict";
-function foo(){
-    return bar();
-    let bar = function() {
-        return 3;
-    };
-    let bar = function() {
-        return 8;
-    };
-}
-alert(foo());
+
+var foo1 = ["one", "two", "three"];
+
+// с деструктуризацией
+var [aa, bb, cc] = foo1;

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Practice</title>
+</head>
+<body>
+<script src="practical-tasks.js"></script>
+<script>
+    var phrase = 'Привет';
+
+    function say(name) {
+        alert(name + ", " + phrase);
+    }
+
+
+    var value = 0;
+
+    function f() {
+        if (1) {
+            value = true;
+        } else {
+            var value = false;
+        }
+
+        alert(value);
+    }
+
+    var currentCount = 1;
+
+    function makeCounter() {
+        return function() {
+            return currentCount++;
+        };
+    }
+
+    var counter = makeCounter();
+    var counter2 = makeCounter();
+
+    alert( counter() ); // ?
+    alert( counter() ); // ?
+    alert( counter() ); // ?
+
+
+    alert( counter2() ); // ?
+    alert( counter2() ); // ?
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>
+        Make Army
+    </title>
+</head>
+<body>
+<script>
+    'use strict';
+
+    function makeArmy() {
+
+        let shooters = [];
+
+        for (let i = 0; i < 10; i++) {
+            shooters.push(function () {
+                console.info(i); // выводит свой номер
+            });
+        }
+
+        // в массив добавляются ф-ции, которые делают алерт, поэтому эл-ты массива надо вызывать как ф-ции
+        return shooters;
+    }
+
+    var army = makeArmy();
+
+    army[0](); // 0
+    army[3]();
+    army[5](); // 5
+</script>
+</body>
+
+</html>

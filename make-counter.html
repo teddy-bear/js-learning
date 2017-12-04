@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>
+        Make Counter
+    </title>
+</head>
+<body>
+<script>
+    'use strict';
+
+    function makeCounter() {
+        var currentCount = 1;
+
+        return function () { // (**)
+            return currentCount++;
+        };
+    }
+
+    var counter = makeCounter(); // (*)
+
+    // каждый вызов увеличивает счётчик и возвращает результат
+    makeCounter();
+    makeCounter();
+    makeCounter();
+    alert(counter());
+
+    // создать другой счётчик, он будет независим от первого
+    var counter2 = makeCounter();
+</script>
+</body>
+
+</html>

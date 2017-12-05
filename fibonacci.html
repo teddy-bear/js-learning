@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>fibonacci</title>
+</head>
+<body>
+<script>
+    'use strict';
+    // Fn = Fn-1 + Fn-2
+    // Loop variant.
+    function fibonacci1(num) {
+        var a = 1, b = 0, temp;
+
+        while (num > 0) {
+            temp = a;
+            //console.log(temp);
+            a = a + b;
+            //console.log(a);
+            b = temp;
+            //console.log(b);
+            num--;
+            console.log(num + " - " + temp);
+        }
+
+        return b;
+    }
+
+    console.log(fibonacci1(10));
+
+    // Recursive solution.
+    function fibonacci2(num) {
+        if (num <= 2) return 1;
+
+        return fibonacci2(num - 1) + fibonacci2(num - 2);
+    }
+
+    console.log(fibonacci2(10));
+
+</script>
+</body>
+</html>

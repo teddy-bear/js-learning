@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Intersection</title>
+</head>
+<body>
+<script>
+    'use strict';
+
+    function unique2(arr) {
+        var obj = {};
+
+        for (var i = 0; i < arr.length; i++) {
+            var str = arr[i];
+            obj[str] = true; // запомнить строку в виде свойства объекта
+        }
+
+        return Object.keys(obj); // или собрать ключи перебором для IE8-
+    }
+
+    function intersect(a, b) {
+        var t;
+        if (b.length > a.length) t = b, b = a, a = t; // indexOf to loop over shorter
+        return a.filter(function (e) {
+            return b.indexOf(e) > -1;
+        });
+    }
+
+    var arr1 = ["sue", "mike", "sue", "tom", "kathy", "henry", "tom"],
+        arr2 = ["howey", "jim", "sue", "jennifer", "kathy", "hank", "alex"];
+
+    var arr1_clear = unique2(arr1);
+
+    console.log(arr1_clear);
+
+    console.log(intersect(arr1_clear, arr2));
+
+</script>
+</body>
+</html>

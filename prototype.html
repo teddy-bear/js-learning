@@ -6,12 +6,37 @@
 </head>
 <body>
 <script>
+    // Links
+    // http://javascript.ru/object/prototype
+    // https://developer.mozilla.org/ru/docs/Web/JavaScript/Inheritance_and_the_prototype_chain
+    // https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Object/hasOwnProperty
     'use strict';
-    var a = {
-        c: 1,
-        b: 2
+    var c = new Object();
+
+    var d = {
+        val1: 'aaaa',
+        val2: 'bbb',
+        val3: 'ccc',
     };
-    console.log(a.hasOwnProperty(c));
+
+    //console.log((typeof(d)));
+
+    c = {
+        a: 1,
+        b: 2,
+        c: 44
+    };
+
+    function changeProp(obj) {
+        obj.val4 = obj.val3;
+        delete obj.val3;
+    }
+
+    changeProp(d);
+
+    console.log(d);
+
+    console.log(d.hasOwnProperty('val4'));
 
 </script>
 </body>

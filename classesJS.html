@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test</title>
+</head>
+<body>
+<div class="first">
+    aaaa
+</div>
+<div class="last">
+    bbb
+</div>
+<script>
+    // since ECMAScript 2015
+    // @link https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Classes
+    class Rectangle {
+        constructor(height, width) {
+            this.height = height;
+            this.width = width;
+        }
+
+        get area() {
+            return this.calcArea();
+        }
+
+        calcArea() {
+            return this.height * this.width;
+        }
+    }
+
+    const square = new Rectangle(10, 10);
+
+    console.log(square.area);
+</script>
+</body>
+</html>

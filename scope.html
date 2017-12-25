@@ -6,16 +6,50 @@
 </head>
 <body>
 Области видимости
-<script src="scope.js"></script>
+<!--<script src="scope.js"></script>-->
 <script>
     "use strict";
-    message();
+
+    //message();
 
     function message() {
         alert(msg);
         var msg = 1;
         alert(msg);
     }
+
+    /*for (var i = 1; i < 5; ++i) {
+        setTimeout(function () {
+            console.log(i);
+        }, 1000);
+    }*/
+
+
+    // fix setTimeout if it`s inside loop -> put delay to the outer function
+    for (var i = 0; i < 5; ++i) {
+        setDelay(i);
+    }
+
+    function setDelay(i) {
+        setTimeout(function () {
+            console.log(i);
+        }, i * 1000);
+    }
+
+    var myObject = {
+        foo: "bar",
+        func: function () {
+            var self = this;
+            console.log("outer func:  this.foo = " + this.foo);
+            console.log("outer func:  self.foo = " + self.foo);
+            (function () {
+                console.log("inner func:  this.foo = " + this.foo); // error here, this is not defined.
+                console.log("inner func:  self.foo = " + self.foo);
+            }());
+        }
+    };
+    myObject.func();
+
 </script>
 </body>
 </html>

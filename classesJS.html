@@ -2,13 +2,24 @@
 <html>
 <head>
     <title>Test</title>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <style>
+        #counter {
+            cursor: pointer;
+            padding: 10px;
+            border: 1px darkmagenta dashed;
+        }
+    </style>
 </head>
 <body>
 <div class="first">
-    aaaa
+    first line
 </div>
 <div class="last">
-    bbb
+    second line
+</div>
+<div id="counter">
+    zzzzzzzz
 </div>
 <script>
     // since ECMAScript 2015
@@ -19,18 +30,28 @@
             this.width = width;
         }
 
-        get area() {
-            return this.calcArea();
-        }
-
         calcArea() {
             return this.height * this.width;
+        }
+
+        get area() {
+            return this.calcArea();
         }
     }
 
     const square = new Rectangle(10, 10);
+    const square1 = new Rectangle(20, 10);
 
     console.log(square.area);
+
+    (function ($) {
+        var num = 0;
+        $('#counter').html(num);
+        $('#counter').on('click', function () {
+            num++;
+            $(this).html(num);
+        })
+    })(jQuery);
 </script>
 </body>
 </html>

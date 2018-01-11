@@ -11,18 +11,13 @@
  */
 
 "use strict";
-var test_obj = {
-    aa: 'Aa',
-    bb: 'bb',
-    dd: 'Ddd',
-    cc: 'cc'
+function foo(){
+    return bar();
+    let bar = function() {
+        return 3;
+    };
+    let bar = function() {
+        return 8;
+    };
 }
-var new_arr = [];
-var new_arr1 = [];
-for (var key in test_obj) {
-    new_arr.push(test_obj[key]);
-    new_arr1.push(key);
-}
-
-console.log(new_arr1);
-console.log(new_arr.sort());
+alert(foo());

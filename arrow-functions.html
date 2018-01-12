@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Arrow functions</title>
+</head>
+<body>
+<script>
+    "use strict";
+
+    var adder = {
+        base: 1,
+
+        add: function (a) {
+            var f = v => v + this.base;
+            return f(a);
+        },
+
+        addThruCall: function (a) {
+            var f = v => v + this.base;
+            var b = {
+                base: 2
+            };
+
+            return f.call(b, a);
+        }
+    };
+
+    console.log(adder.add(1));         // Выводит 2
+    console.log(adder.addThruCall(1)); // Всё равно выводит 2
+
+</script>
+</body>
+</html>

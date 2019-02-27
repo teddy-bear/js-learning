@@ -1,3 +1,5 @@
+var sample_array = ["test", 2, 1.5, false];
+
 if (!Array.prototype.find) {
     Array.prototype.find = function(predicate) {
         if (this == null) {
@@ -35,15 +37,26 @@ function calc() {
     alert(summ);
 }
 
-//calc();
+/**
+ * Retrieve Element Index
+ * @param arr
+ * @param value
+ * @returns {*}
+ */
+function getElementIndex(arr, value) {
+    var i = 0;
 
-var arr = ['test', 1, 2, 3.11, false];
-
-function find1(arr, value) {
-    var return_value = arr.find(value);
-    if (return_value != undefined) {
-        return return_value
+    if (arr.indexOf) {
+        return arr.indexOf(value);
     }
+
+    for (i; i < arr.length; i++) {
+        if (arr[i] === value) return i;
+    }
+
+    return -1;
 }
 
-find1(arr, 1);
+var result = getElementIndex(sample_array, 'ttest');
+
+console.log(result);

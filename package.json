@@ -1,0 +1,22 @@
+{
+  "name": "js_learning",
+  "version": "1.0.0",
+  "description": "Js learning files",
+  "main": "arrays-practice.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/teddy-bear/js-learning.git"
+  },
+  "author": "Mike Teddy",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/teddy-bear/js-learning/issues"
+  },
+  "homepage": "https://github.com/teddy-bear/js-learning#readme",
+  "devDependencies": {
+    "eslint": "^5.14.1"
+  }
+}

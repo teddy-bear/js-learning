@@ -1,7 +1,8 @@
 var sample_array = ["test", 2, 1.5, false];
+var numbers_array = [1, -10, 2, 1.5, 5, -5, 1];
 
 if (!Array.prototype.find) {
-    Array.prototype.find = function(predicate) {
+    Array.prototype.find = function (predicate) {
         if (this == null) {
             throw new TypeError('Array.prototype.find called on null or undefined');
         }
@@ -37,26 +38,64 @@ function calc() {
     alert(summ);
 }
 
-/**
- * Retrieve Element Index
- * @param arr
- * @param value
- * @returns {*}
- */
-function getElementIndex(arr, value) {
-    var i = 0;
 
-    if (arr.indexOf) {
-        return arr.indexOf(value);
+var my_obj = {
+
+    /**
+     * Get array sum
+     * @param arr
+     * @returns {number}
+     */
+    getArraySum: function (arr) {
+        var i = 0,
+            sum = 0;
+
+        for (i; i < arr.length; i++) {
+            if (arr[i] > 0) {
+                sum += arr[i];
+            } else {
+                sum = 0;
+            }
+        }
+
+        return sum;
+    },
+
+    /**
+     * Retrieve elem index
+     * @param arr
+     */
+    getIndexOf: function(arr, item) {
+        return arr.indexOf(item);
+    },
+
+    /**
+     * Retrieve Element Index
+     * @param arr
+     * @param value
+     * @returns {*}
+     */
+    getElementIndex: function (arr, value) {
+        var i = 0;
+
+        if (arr.indexOf) {
+            return arr.indexOf(value);
+        }
+
+        for (i; i < arr.length; i++) {
+            if (arr[i] === value) return i;
+        }
+
+        return -1;
     }
+};
 
-    for (i; i < arr.length; i++) {
-        if (arr[i] === value) return i;
-    }
+(function (_) {
 
-    return -1;
-}
+    _.getArraySum(numbers_array);
 
-var result = getElementIndex(sample_array, 'ttest');
+    _.getElementIndex(sample_array, 'ttest');
 
-console.log(result);
+    _.getIndexOf(numbers_array, 1)
+
+}(my_obj));

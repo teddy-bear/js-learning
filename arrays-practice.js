@@ -1,6 +1,6 @@
 var sample_array = ["test", 2, 1.5, false],
     numbers_array = [1, -10, 2, 1.5, 5, -5, 1],
-    test_object = {className: 'open menu'};
+    test_object = {className: 'open menu menu open new'};
 
 
 if (!Array.prototype.find) {
@@ -93,6 +93,7 @@ var my_obj = {
 
     /**
      * Add class by checking string index property
+     * not good solution since obj.className = "open mymenu" is possible
      * @param object
      * @param className
      */
@@ -118,6 +119,42 @@ var my_obj = {
         }
 
         object.className = target.join(' ');
+
+    },
+
+    /**
+     * Remove class from object`s key
+     * @param object
+     * @param className
+     */
+    removeClass: function (object, className) {
+        var target = object.className.split(' '),
+            i = 0;
+
+        for (i; i < target.length; ++i) {
+            if (target[i] === className) {
+                target.splice(i, 1);
+                i--; // * rewind check since array item is removed
+            }
+        }
+
+        object.className = target.join(' ');
+    },
+
+    /**
+     * Capitalize each letter in array
+     * @param target
+     * @returns {*}
+     */
+    camelize: function (target) {
+        var arr = target.split('-'),
+            i = 1;
+
+        for (i; i < arr.length; ++i) {
+            arr[i] = arr[i].charAt(0).toUpperCase() + arr[i].slice(1);
+        }
+
+        return arr.join('');
 
     },
 

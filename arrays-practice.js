@@ -1,5 +1,7 @@
-var sample_array = ["test", 2, 1.5, false];
-var numbers_array = [1, -10, 2, 1.5, 5, -5, 1];
+var sample_array = ["test", 2, 1.5, false],
+    numbers_array = [1, -10, 2, 1.5, 5, -5, 1],
+    test_object = {className: 'open menu'};
+
 
 if (!Array.prototype.find) {
     Array.prototype.find = function (predicate) {
@@ -65,7 +67,7 @@ var my_obj = {
      * Retrieve elem index
      * @param arr
      */
-    getIndexOf: function(arr, item) {
+    getIndexOf: function (arr, item) {
         return arr.indexOf(item);
     },
 
@@ -87,6 +89,42 @@ var my_obj = {
         }
 
         return -1;
+    },
+
+    /**
+     * Add class by checking string index property
+     * @param object
+     * @param className
+     */
+    addClassByIndex: function (object, className) {
+        var target = object.className;
+        if (target.indexOf(className) === -1) {
+            target += ' ' + className;
+        }
+        object.className = target;
+
+    },
+
+    /**
+     * Add class property by checking array
+     * @param object
+     * @param className
+     */
+    addClassByArray: function (object, className) {
+        var target = object.className.split(' ');
+
+        if (!(target.includes(className))) {
+            target.push(className);
+        }
+
+        object.className = target.join(' ');
+
+    },
+
+    options: {
+        aa: 11,
+        bb: 22,
+        cc: 33
     }
 };
 

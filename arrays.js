@@ -1,3 +1,39 @@
+var my_obj = {
+
+        options: {
+            sample_array: ["воз", "киборг", "корсет", "ЗОВ", "гробик", "костер", "сектор"],
+            sample_array2: ["кришна", "кришна", "харе", "харе", "харе", "харе", "кришна", "кришна", "8-()"]
+        },
+
+        /**
+         * Remove duplicated properties from array
+         * @param arr
+         * @returns {Array}
+         */
+        arrClean: function (arr) {
+            var obj = {},
+                i = 0,
+                sorted = '',
+                result = [];
+
+            for (i; i < arr.length; i++) {
+                sorted = arr[i].toLowerCase().split('').sort().join('');
+                // Populate object with key = sorted: value = original
+                // duplicated keys will be simply overridden with new values
+                obj[sorted] = arr[i];
+            }
+
+            // Populate result with obj. values
+            for (var key in obj) result.push(obj[key]);
+
+            return result;
+
+            /*var arr_sorted = unique(obj.received);
+            return arr_sorted;*/
+        }
+    }
+;
+
 var arr = [1, 2, 3, {}, 'cc'];
 
 //многомерный массив
@@ -25,3 +61,32 @@ var sliced = newArr.slice(1, 3); // с какого по какой эл-т ма
 
 console.log(arr_splice);
 var newArr2 = newArr.join('/');
+
+function unique(arr) {
+    var result_arr = [];
+    nextInput:
+        for (var i = 0; i < arr.length; i++) {
+            var current_val = arr[i];
+            for (var j = 0; j < result_arr.length; j++) {
+                if (result_arr[j] === current_val) continue nextInput;
+            }
+            result_arr.push(current_val);
+        }
+    return result_arr;
+}
+
+function unique2(arr) {
+    var obj = {};
+
+    for (var i = 0; i < arr.length; i++) {
+        var str = arr[i];
+        obj[str] = true; // запомнить строку в виде свойства объекта
+    }
+
+    return Object.keys(obj); // или собрать ключи перебором для IE8-
+}
+
+
+(function (_) {
+    _.arrClean(_.options.sample_array);
+}(my_obj));

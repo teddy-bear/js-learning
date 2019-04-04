@@ -1,28 +1,64 @@
-/*
- var int_start = +prompt('enter start count', 'aa');
- var int_end = +prompt('enter start count', 'bb');
- var i;
- for (i = int_start; i <= int_end; i++) {
- if (i % 2 == 0) {
- document.writeln(i);
- console.log(i);
- }
- }
- */
-
 "use strict";
-var test_obj = {
-    aa: 'Aa',
-    bb: 'bb',
-    dd: 'Ddd',
-    cc: 'cc'
-}
-var new_arr = [];
-var new_arr1 = [];
-for (var key in test_obj) {
-    new_arr.push(test_obj[key]);
-    new_arr1.push(key);
+
+var salaries = {
+    "aa": 'dfdfdf',
+    "bb": '300',
+    "cc": 550,
+    "d": 250
+};
+
+
+function isNumeric(n) {
+    return !isNaN(parseFloat(n)) && isFinite(n)
 }
 
-console.log(new_arr1);
-console.log(new_arr.sort());
+function doubleIntValues(obj) {
+    var key;
+
+    for (key in obj) {
+        if (!isNumeric(obj[key])) continue;
+        obj[key] = obj[key] * 2;
+    }
+
+    console.log(obj);
+}
+
+function getMax(obj) {
+    var key,
+        current_int = 0,
+        current_key,
+        max_key,
+        max_int = 0;
+
+    for (key in obj) {
+        current_int = obj[key];
+        current_key = key;
+        if (current_int > max_int) {
+            max_int = current_int;
+            max_key = current_key;
+        }
+    }
+
+    console.log(max_key);
+}
+
+
+function getSumm(obj) {
+    var key,
+        key_int,
+        summ = 0;
+
+    for (key in obj) {
+        key_int = Number(obj[key]);
+        if (isNaN(key_int)) continue;
+        summ += key_int;
+    }
+    console.log(summ);
+}
+
+var call_max = doubleIntValues;
+
+(function () {
+    call_max(salaries);
+}());
+

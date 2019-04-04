@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Seconds counter</title>
+</head>
+<body>
+<script>
+    'use strict';
+    let limit_low = 0;
+    let limit_top = 5;
+
+    function pintNumbers(arg) {
+        var i = 1;
+        var timerCustom = setInterval(function () {
+            console.log(i);
+            if (i === arg) {
+                console.log('end');
+                clearInterval(timerCustom);
+            }
+            i++;
+        }, 1000);
+    }
+
+    //pintNumbers(4);
+
+
+    function printNumbersTimeOut(arg) {
+        let i = 1;
+        setTimeout(function go() {
+            console.log(i);
+            if (i < arg) {
+                setTimeout(go, 500);
+                i++;
+            }
+        }, 500);
+    }
+
+    printNumbersTimeOut(10);
+
+</script>
+</body>
+</html>

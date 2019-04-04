@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Counter (closures)</title>
+</head>
+<body>
+
+<script>
+    // @link https://developer.mozilla.org/ru/docs/Web/JavaScript/Closures
+    var Counter = function () {
+        var privateCounter = 0;
+
+        function changeBy(val) {
+            privateCounter += val;
+        }
+
+        return {
+            increment: function (arg) {
+                //changeBy(1);
+                arg = typeof arg === "undefined" ? 1 : arg;
+                privateCounter += arg;
+            },
+            decrement: function () {
+                //changeBy(-1);
+                --privateCounter;
+            },
+            value: function () {
+                return privateCounter;
+            }
+        };
+    };
+
+
+    var Counter1 = Counter();
+    var Counter2 = Counter();
+    Counter1.increment();
+    console.log(Counter1.value());
+    Counter1.increment(3);
+    console.log(Counter1.value());
+    Counter2.decrement();
+    console.log(Counter2.value());
+    console.log(Counter1);
+</script>
+</body>
+</html>

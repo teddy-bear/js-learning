@@ -104,5 +104,19 @@ var funcArgsTest = function () {
     return sum;
 };
 
-console.log(funcArgsTest(12, 3, 34, 12,31212));
+console.log(funcArgsTest(12, 3, 34, 12, 31212));
+
+
+function checkAge(age) {
+    return (age > 18) || confirm('Родители разрешили?');
+}
+
+//checkAge(22);
+
+function min(a, b) {
+    return a > b ? a : b;
+}
+
+
+min(552, 55);
 

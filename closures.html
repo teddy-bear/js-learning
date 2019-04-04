@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Closures</title>
+</head>
+<body>
+<p id="help">Helpful notes will appear here</p>
+<p>E-mail: <input type="text" id="email" name="email"></p>
+<p>Name: <input type="text" id="name" name="name"></p>
+<p>Age: <input type="text" id="age" name="age"></p>
+<script>
+    // @link https://developer.mozilla.org/ru/docs/Web/JavaScript/Closures
+    function showHelp(help) {
+        document.getElementById('help').innerHTML = help;
+    }
+
+    function makeHelpCallback(help) {
+        return function() {
+            showHelp(help);
+        };
+    }
+
+    function setupHelp() {
+        var helpText = [
+            {'id': 'email', 'help': 'here e-mail'},
+            {'id': 'name', 'help': 'name here'},
+            {'id': 'age', 'help': 'add age'}
+        ];
+
+        for (var i = 0; i < helpText.length; i++) {
+            var item = helpText[i];
+            document.getElementById(item.id).onfocus = makeHelpCallback(item.help);
+        }
+    }
+
+    setupHelp();
+
+</script>
+</body>
+</html>

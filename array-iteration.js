@@ -49,5 +49,4 @@ var my_obj = {
 
 (function (_) {
 
-
 }(my_obj));

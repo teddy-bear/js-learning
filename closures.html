@@ -15,7 +15,7 @@
     }
 
     function makeHelpCallback(help) {
-        return function() {
+        return function () {
             showHelp(help);
         };
     }
@@ -34,6 +34,33 @@
     }
 
     setupHelp();
+
+
+    var currentCount = 1;
+
+    // In this both: counter and counter2 will change global var currentCount
+    function makeCounter() {
+        // to split variables need to redeclare variable inside the function
+        // var currentCount = 1;
+        return function () {
+            return currentCount++;
+        };
+    }
+
+    // Or rewrite function via function property
+    function makeCounterProp() {
+        function counter() {
+            return counter.currentCount++;
+        }
+
+        // Function = object => we can add property(key) to the object
+        counter.currentCount = 1;
+
+        return counter;
+    }
+
+    var counter = makeCounter();
+    var counter2 = makeCounter();
 
 </script>
 </body>

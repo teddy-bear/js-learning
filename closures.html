@@ -62,6 +62,110 @@
     var counter = makeCounter();
     var counter2 = makeCounter();
 
+
+    function sum(a) {
+        return function (b) {
+            return a + b;
+        }
+
+    }
+
+    // Использование замыканий
+    // @link http://learn.javascript.ru/closures-usage
+    function makeBuffer() {
+
+        var temp_value = '';
+
+        function result(value) {
+            if (arguments.length === 0) {
+                return temp_value;
+            }
+            temp_value += ' ' + value;
+
+        }
+
+        result.clear = function () {
+            temp_value = '';
+        };
+
+
+        return result;
+    }
+
+    var buffer = makeBuffer();
+    /*buffer("Тест");
+    buffer(" тебя не съест ");
+    alert( buffer() ); // Тест тебя не съест*/
+
+    var arr = [1, 2, 3, 4, 5, 6, 7];
+
+
+    function inBetween(arr, from, to) {
+        var result = arr.filter(function (number) {
+            return number > from && number < to;
+        });
+
+        return result;
+    }
+
+    function inArray(arr) {
+        return function (x) {
+            return arr.indexOf(x) != -1;
+        };
+    }
+
+    // Filter items that either belong are out of the array.
+    // filter(arr, inArray([1,1,2]))
+    function filter(arr, func) {
+        var result = [];
+
+        for (var i = 0; i < arr.length; i++) {
+            var val = arr[i];
+            if (func(val)) {
+                result.push(val);
+            }
+        }
+
+        return result;
+    }
+
+    var users = [{
+        name: "John",
+        surname: 'Tims',
+        age: 20
+    }, {
+        name: "Mary",
+        surname: 'Spens',
+        age: 25
+    }, {
+        name: "Mike",
+        surname: 'Leff',
+        age: 18
+    }];
+
+    function byField(field) {
+        return function (a, b) {
+            return a[field] > b[field] ? 1 : -1;
+        }
+    }
+
+    function makeArmy() {
+
+        var shooters = [];
+
+        for (let i = 0; i < 10; i++) {
+            var shooter = function () {
+                console.log(i);
+            };
+            shooters.push(shooter);
+        }
+
+        return shooters;
+    }
+
+    var army = makeArmy();
+
+
 </script>
 </body>
 </html>

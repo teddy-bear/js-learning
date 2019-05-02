@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Closures Module</title>
+</head>
+<body>
+<script>
+    var obj = {
+        a: 1,
+        b: 2
+    };
+
+    // Module approach
+    // Create self-invoking function with own Lexical Environment (variables) => encapsulation
+    (function (_) {
+
+        // глобальная переменная нашего скрипта
+        var message = _.a;
+
+        // функция для вывода этой переменной
+        function showMessage() {
+            console.log(message);
+        }
+
+        // выводим сообщение
+        showMessage();
+
+    }(obj));
+</script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>object methods</title>
+</head>
+<body>
+<form action="" id="form">
+    <input type="text" name="name" id="name"><br>
+    <input type="text" name="city" id="city">
+</form>
+<script>
+    'use strict';
+
+    var calculator = {
+        name: '',
+        city: '',
+        read: function () {
+            this.name = document.getElementById("name").value;
+            this.city = document.getElementById("city").value;
+        },
+        sum: function () {
+            return this.name + ' from ' + this.city;
+        },
+        mul: function () {
+            console.log(this.name + ' ' + this.city)
+        }
+    };
+
+    var ladder = {
+        step: 0,
+        up: function () {
+            this.step++;
+            return this;
+        },
+        down: function () {
+            this.step--;
+            return this;
+        },
+        showStep: function () {
+            console.log(this.step);
+            return this;
+        }
+    };
+
+    // Chaining method
+    ladder.up().up().down().up().down().showStep(); // 1
+
+</script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Descriptors getters & setters</title>
+</head>
+<body>
+<h1>Дескрипторы, геттеры и сеттеры свойств</h1>
+<script>
+    'use strict';
+    var user = {};
+
+    // Constant property
+    Object.defineProperty(user, "name", {
+        value: "Mike",
+        writable: false, // запретить присвоение "user.name="
+        configurable: false // запретить удаление "delete user.name"
+    });
+
+    function User(fullName) {
+        this.fullName = fullName;
+    }
+
+    var new_user = new User('Simon Lee');
+
+
+    // Добавление новых свойст в объект
+    Object.defineProperties(new_user, {
+        firstName: {
+            get: function () {
+                return this.fullName.split(' ')[0];
+            }
+        },
+        lastName: {
+            get: function () {
+                return this.fullName.split(' ')[1];
+            }
+
+        }
+    })
+
+</script>
+</body>
+</html>

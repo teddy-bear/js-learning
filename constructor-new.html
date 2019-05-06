@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Constructor new</title>
+</head>
+<body>
+<form action="" id="form">
+    <p>
+        <input type="number" name="count" id="count" placeholder="count"><br>
+    </p>
+    <p>
+        <input type="text" name="name" id="name" placeholder="name">
+    </p>
+    <p>
+        <input type="text" name="city" id="city" placeholder="city">
+    </p>
+</form>
+<script>
+    // Конструктором становится любая функция, вызванная через new.
+    'use strict';
+
+    // Function constructor -> better practice : Capitalze name
+    function Animal(name) {
+        this.name = name;
+        this.alive = true;
+    }
+
+    var hedgehog = new Animal('hedgehog');
+
+
+    function GetInfo() {
+        this.read = function () {
+            this.name = document.getElementById("name").value;
+            this.city = document.getElementById("city").value;
+            return this.name + this.city;
+        };
+    }
+
+    var getinfo = new GetInfo();
+    getinfo.read();
+
+    function Accumulator(int_start) {
+        this.value = int_start;
+
+        this.read = function () {
+            this.value += +document.getElementById("count").value;
+        };
+
+
+    }
+
+    var accumulator = new Accumulator(1);
+
+    function Calculator() {
+
+        // store operators at object2
+        var methods = {
+            '+': function (a, b) {
+                return a + b;
+            },
+            '-': function (a, b) {
+                return a - b;
+            }
+        };
+
+        this.calculate = function (args) {
+            args = args.split(' ');
+
+            var arg1 = +args[0],
+                arg2 = +args[2],
+                action = args[1];
+
+            if (methods.hasOwnProperty(action)) {
+                return methods[action](arg1, arg2);
+            }
+
+            return action + ' is not a valid operator';
+        };
+
+        // Add new methods to the calculator.
+        this.addMethod = function (action, func) {
+            methods[action] = func;
+        };
+    }
+
+    var calc = new Calculator();
+
+    calc.addMethod("*", function (a, b) {
+        return a * b;
+    });
+
+    var result = calc.calculate("2 * 3");
+
+
+</script>
+</body>
+</html>

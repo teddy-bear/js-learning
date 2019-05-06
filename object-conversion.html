@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>object сс</title>
+</head>
+<body>
+<form action="" id="form">
+    <input type="text" name="name" id="name"><br>
+    <input type="text" name="city" id="city">
+</form>
+<script>
+    'use strict';
+
+    // Convert object into primitive
+
+    // 1) Logical conversion
+    // Always true -> every object is logically true
+    if ({} && []) {
+    }
+
+    // 2) String conversion -> toString method
+    var user = {
+
+        firstName: 'Василий',
+
+        // Переопдределяет встроенный метод объекта toString
+        toString: function () {
+            return 'Пользователь ' + this.firstName;
+        }
+    };
+
+    user;  // Пользователь Василий
+
+    // 3) Numeric conversion -> valueOf method
+    var obj = {
+        valueOf: function () {
+            return 1;
+        }
+    };
+
+    obj + "test"// 1test
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Call and apply for this</title>
+</head>
+<body>
+<h1>Явное указание this: "call", "apply"</h1>
+<script>
+    'use strict';
+    var user = {
+        name: 'Mike',
+        surname: 'Alex'
+    };
+
+    function showName() {
+        // copy all arguments into array
+        var args = [].slice.call(arguments);
+        console.log(args.join(', '));
+        return this.name + ' ' + this.surname;
+    }
+
+    // Force call for object
+    showName.call(user); // Mike Alex
+    showName.call(user, 'custom arg'); // Mike Alex custom arg
+
+    // Or we may use .apply
+    showName.apply(user, ['Additional', 'Arguments', 'goes', 'here']);
+
+    /* Practical tasks */
+    // Считает сумму аргументов
+    function sumArgs() {
+        // получает массив аргументов
+        //var args = [].slice.call(arguments),
+            var res = 0;
+        for (var i = 0; i < arguments.length; i++) {
+            res += arguments[i];
+        }
+
+        return res;
+    }
+
+    sumArgs(1, 2, 3, 4);
+
+
+</script>
+</body>
+</html>

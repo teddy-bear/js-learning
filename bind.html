@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bind</title>
+</head>
+<body>
+<h1>Привязка контекста</h1>
+<script>
+    'use strict';
+    var user = {
+        firstName: "Вася",
+        sayHi: function () {
+            alert(this.firstName);
+        }
+    };
+
+    //setTimeout(user.sayHi, 3000); // Так не работает
+    //setTimeout(user.sayHi(), 3500); // Так  работает, но будет всегда обращаться к одном объекту
+
+    function ask(question, answer, ok, fail) {
+        var result = prompt(question, '');
+        if (result.toLowerCase() == answer.toLowerCase()) ok();
+        else fail();
+    }
+
+    var user1 = {
+        login: 'Василий',
+        password: '12345',
+
+        loginOk: function () {
+            alert(this.login + ' вошёл в сайт');
+        },
+
+        loginFail: function () {
+            alert(this.login + ': ошибка входа');
+        },
+
+        checkPassword: function () {
+            ask("Ваш пароль?", this.password, this.loginOk, this.loginFail);
+        }
+    };
+
+    user1.checkPassword().bind(this);
+
+
+</script>
+</body>
+</html>

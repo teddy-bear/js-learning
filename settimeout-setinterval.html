@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>setTimeout & setInterval</title>
+</head>
+<body>
+<script>
+    'use strict';
+
+    function printNumbersInterval() {
+        var i = 0;
+        var timer = setInterval(function () {
+            console.log(++i);
+            if (i === 20) {
+                clearInterval(timer);
+            }
+        }, 100);
+    }
+
+    printNumbersTimeOut()
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Interface</title>
+</head>
+<body>
+<script>
+    "use strict";
+
+    function CoffeeMachine(power, capacity) {
+
+        // create private property
+        var waterAmount = 0,
+            isRunning = false;
+
+        // чтобы получать значение из замыкания
+        var self = this;
+
+        // физическая константа - удельная теплоёмкость воды для getBoilTime
+        var WATER_HEAT_CAPACITY = 4200;
+
+        // расчёт времени для кипячения
+        function getBoilTime() {
+            return 7000;
+            //return self.waterAmount * WATER_HEAT_CAPACITY * 80 / power; // ошибка!
+        }
+
+        // Setter = set water amount for private property
+        this.setWaterAmount = function (amount) {
+            if (amount > WATER_HEAT_CAPACITY || amount < 0) {
+                console.warn('wrong amount')
+            } else {
+                console.info('amount updated');
+                waterAmount = amount;
+            }
+        };
+
+        this.getWaterAmount = function () {
+            return waterAmount;
+        };
+
+        // 2 in 1 = Getter + setter
+        this.waterAmount = function (amount) {
+            // вызов без параметра, значит режим геттера, возвращаем свойство
+            if (!arguments.length) return waterAmount;
+
+            // иначе режим сеттера
+            if (amount < 0) {
+                throw new Error("Значение должно быть положительным");
+            }
+            if (amount > capacity) {
+                throw new Error("Нельзя залить воды больше, чем " + capacity);
+            }
+            console.log('amount updated');
+            waterAmount = amount;
+        };
+
+        this.getPower = function () {
+            return power;
+        };
+
+        // что делать по окончании процесса
+        function onReady() {
+            isRunning = false;
+            console.log('Кофе готов!');
+        }
+
+        this.run = function () {
+            console.log('started');
+            isRunning = true;
+            setTimeout(onReady, getBoilTime());
+        };
+
+        this.isRunning = function () {
+            return isRunning;
+        }
+
+    }
+
+    var coffeeMachine = new CoffeeMachine(1000, 500);
+
+    //coffeeMachine.run()
+
+    function User() {
+        var firstName, surname;
+
+        this.setName = function (name) {
+            if (isNaN(name)) {
+                firstName = name;
+            }
+        };
+
+        this.getFullName = function (fullName) {
+            if (!arguments.length) return firstName;
+
+            firstName = fullName;
+
+            return firstName;
+
+        }
+    }
+
+    var user = new User();
+
+
+</script>
+</body>
+</html>

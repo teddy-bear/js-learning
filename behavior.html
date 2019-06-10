@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Behavior</title>
+</head>
+<body>
+
+<button data-toggle-id="subscribe-mail">
+    Show form
+</button>
+
+<form id="subscribe-mail" hidden>
+    Email: <input type="email">
+</form>
+
+<script>
+    document.onclick = function (event) {
+        var target = event.target,
+            id = target.getAttribute('data-toggle-id'),
+            elem = document.getElementById(id);
+
+        if (!id) {
+            console.log('outer clicked');
+            return;
+        }
+
+        // Nice trick to invert/toggle current value
+        elem.hidden = !elem.hidden;
+
+        // Toggle class native method
+        elem.classList.toggle('visible')
+    };
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Delegate events</title>
+</head>
+<body>
+
+<div id="menu">
+    <button data-action="save">save</button>
+    <button data-action="load">load</button>
+    <button data-action="search">search</button>
+</div>
+
+<script>
+
+    /*
+    @link http://learn.javascript.ru/event-delegation
+    * Алгоритм:
+        Вешаем обработчик на контейнер.
+        В обработчике: получаем event.target.
+        В обработчике: если event.target или один из его родителей в контейнере (this) – интересующий нас элемент – обработать его.
+    */
+    var menu = document.getElementById('menu');
+
+    function Menu(elem) {
+        this.save = function () {
+            console.log('saving');
+        };
+        this.load = function () {
+            console.log('loading');
+        };
+        this.search = function () {
+            console.log('searching');
+        };
+
+        var self = this;
+
+        elem.onclick = function (e) {
+            var target = e.target;
+            var action = target.getAttribute('data-action');
+            if (action) {
+                self[action]();
+            }
+        };
+    }
+
+    Menu(menu);
+</script>
+
+
+</body>
+</html>

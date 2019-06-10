@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Browser events</title>
+</head>
+<body>
+<textarea rows="8" cols="40" id="area">click me</textarea><br>
+<input type="button" id="button" value="buttonT">
+<input type="text" id="text" size="60">
+<script>
+    // Web Workers =  спецификация, к-рая позволяет запускать дополнительные JS процессы параллельно с основным потоком
+    // модальны окна(alert) блочат выполнения основного потока JS кода
+    // не имеют доступа к DOM
+
+
+    let area = document.getElementById('area'),
+        button = document.getElementById('button'),
+        text = document.getElementById('text');
+
+    area.onmousedown = function (e) {
+        this.value += "mousedown\n";
+        this.scrollTop = this.scrollHeight;
+    };
+    area.onmouseup = function (e) {
+        this.value += "mouseup\n";
+        this.scrollTop = this.scrollHeight;
+    };
+    area.onclick = function (e) {
+        this.value += "click\n";
+        this.scrollTop = this.scrollHeight;
+    };
+
+    button.onclick = function () {
+        text.value += ' ->onclick ';
+
+        // сработает после onclick
+        setTimeout(function () {
+            text.focus();
+        }, 0);
+
+        text.value += '  onclick-> ';
+    };
+
+    text.onfocus = function () {
+        text.value += ' !focus! ';
+    };
+
+</script>
+
+
+</body>
+</html>
